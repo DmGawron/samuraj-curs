@@ -1,4 +1,6 @@
 
+const toDoList = []
+
 const form = document.querySelector('form');
 const taskNumber = document.querySelector('h1 span');
 const ul = document.querySelector('ul');
@@ -19,6 +21,7 @@ const addTask = (e) => {
     const task = document.createElement('li')
     task.className = 'task'
     task.innerHTML = titleTask + '<button>Usuń</button>'
+    toDoList.push(task)
     ul.appendChild(task)
     input.value = ''
     // const listItems = document.querySelectorAll('li.task').length
