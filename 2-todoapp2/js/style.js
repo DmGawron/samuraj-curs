@@ -9,7 +9,18 @@ const listItems = document.getElementsByClassName('task')
 
 const removeTask = (e) => {
     e.target.parentNode.remove()
+    const index = e.target.parentNode.id
+    toDoList.splice(index,1)
     taskNumber.textContent = listItems.length
+    renderList()
+}
+
+const renderList =() => {
+    ul.textContent = ''
+    toDoList.forEach((todoElement, index) => {
+        todoElement.id = index
+        ul.appendChild(todoElement)
+    } )
 }
 
 
@@ -22,6 +33,7 @@ const addTask = (e) => {
     task.className = 'task'
     task.innerHTML = titleTask + '<button>Usuń</button>'
     toDoList.push(task)
+   renderList()
     ul.appendChild(task)
     input.value = ''
     // const listItems = document.querySelectorAll('li.task').length
