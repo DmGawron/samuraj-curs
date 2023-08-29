@@ -47,3 +47,83 @@ const object1 = {
 
 object1.two()
 object1.four()
+
+/////call//////////
+
+const showPesel = function() {
+    console.log(`twoj pesel to: ${this.pesel}`);
+}
+
+const human = {
+    pesel: 2032049402840,
+    showPesel: showPesel
+}
+
+// human.showPesel()
+showPesel.call(human)
+
+const showUser = function(name) {
+    console.log(`użytkownik ${name} ma ${this.pesel}`);
+}
+
+showUser.call(human,'damian')
+
+/////bind///////////////////////////
+
+const showPeselUser = showPesel.bind(human)
+showPeselUser()
+
+
+///////////////////////////////////
+
+const szarik = {
+    children: ['fafik','żaba'],
+    showChildren: function() {
+        const that = this
+        console.log(that);
+        this.children.forEach(function(child,index) {
+            console.log(that.children[index]);
+        })
+    }
+}
+
+szarik.showChildren()
+
+console.log('---------------------------------');
+
+const szarik1 = {
+    children: ['fafik','żaba'],
+    showChildren: function() {
+        for(const child of this.children) {
+            console.log(child);
+        }
+    }
+}
+
+szarik1.showChildren()
+
+console.log('---------------------------------');
+
+
+const szarik2 = {
+    children: ['fafik','żaba'],
+    showChildren: function() {
+        this.children.forEach((child,index) => {
+            console.log(this.children[index]);
+        })
+    }
+}
+
+szarik2.showChildren()
+
+console.log('---------------------------------');
+
+const szarik3 = {
+    children: ['fafik','żaba'],
+    showChildren: function() {
+        this.children.forEach(function (child,index) { console.log(this.children[index]);
+        }.bind(this))
+    }
+}
+
+szarik3.showChildren()
