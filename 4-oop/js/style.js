@@ -56,3 +56,18 @@ const zenek = new Citizen('Polska', 'polskie')
 
 Citizen.prototype.age = 21
 
+const arr = [5,6,7,8]
+Array.prototype.delete = function(index) {
+   return this.splice(index, 1)
+}
+arr.delete(1)
+
+///instanceof//////////////////
+
+console.log( arr instanceof Array);
+console.log( zenek instanceof Citizen);
+
+///object.getprototypeof//////////
+console.log(Object.getPrototypeOf(arr));
+
+
