@@ -1,22 +1,23 @@
 
+import Slider from './slider.js'
+// import Slide from './slide.js'
 
-class Cat {
-    constructor(color) {
-     this._color = color   
-    }
-    getColor() {
-        return this._color
-    }
 
-    setColor(value) {
-        if(typeof value === 'string') {
-           return this._color = value
-        } else {
-            console.log('wartosc nieprawidlowa');
-        }
-    }
-}
+const slideList = [
+  {
+    img: "images/img1.jpg",
+    text: "Pierwszy tekst",
+  },
+  {
+    img: "images/img2.jpg",
+    text: "Drugi tekst",
+  },
+  {
+    img: "images/img3.jpg",
+    text: "Trzeci tekst",
+  },
+];
 
-const kotek = new Cat('czarny')
-console.log(kotek.setColor('white'));
-console.log(kotek.getColor());
+const slider = new Slider(slideList, "img.slider","h1.slider",".dots span", 2900)
+
+slider.start()
